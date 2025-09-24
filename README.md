@@ -29,6 +29,35 @@ A web framework written in Gleam, designed for multiple JavaScript runtimes!
 
 ## 🚀 How to use
 
+You can easily set up a server running on CloudFlare Workers using [hinoto/cli](https://github.com/comamoca/hinoto_cli).
+
+```sh
+gleam deps download
+# Setup project for CloudFlare workers
+gleam run -m hinoto/cli -- workers init
+
+# Preview
+wrangler dev
+```
+
+Write code like the following in `./src/{project name}.gleam`.
+Note that if you answered "yes" to the question `Do you want to overwrite {project name}.gleam with a minimal server example?` in hinoto/cli, a working server is already written.
+
+```gleam
+import conversation.{Text}
+import gleam/http/response
+import gleam/javascript/promise
+import hinoto.{type DefaultContext, type Hinoto}
+
+pub fn main(hinoto: Hinoto(DefaultContext)) -> Hinoto(DefaultContext) {
+  use _req <- hinoto.handle(hinoto)
+
+  response.new(200)
+  |> response.set_body(Text("<h1>Hello!</h1>"))
+  |> response.set_header("content-type", "text/html")
+  |> promise.resolve
+}
+```
 
 ## ⬇️ Install
 
