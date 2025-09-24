@@ -35,8 +35,8 @@ A web framework written in Gleam, designed for multiple JavaScript runtimes!
 Add dependencies for hinoto and hinoto_cli to the `dependencies` section of `gleam.toml`.
 
 ```toml
-hinoto = { git = "https://github.com/Comamoca/hinoto" }
-hinoto_cli = { git = "https://github.com/Comamoca/hinoto_cli" }
+hinoto = { git = "https://github.com/Comamoca/hinoto", ref = "main" }
+hinoto_cli = { git = "https://github.com/Comamoca/hinoto_cli", ref = "main" }
 ```
 
 ```sh
