@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Gleam
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: "26"
+          gleam-version: "1.12.0"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "latest"
+
+      - name: Install dependencies
+        run: gleam deps download
+
+      - name: Check code
+        run: gleam check
+
+      - name: Check formatting
+        run: gleam format --check
+
+      - name: Run tests
+        run: gleam test

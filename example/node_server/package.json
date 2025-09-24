@@ -1,0 +1,9 @@
+{
+  "name": "node_server",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "dependencies": {
+    "@hono/node-server": "^1.19.4"
+  }
+}

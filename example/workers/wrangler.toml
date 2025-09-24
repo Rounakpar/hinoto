@@ -1,0 +1,6 @@
+name = "workers"
+main = "build/dev/javascript/workers/index.js"
+compatibility_date = "2023-09-22"
+
+[build]
+command = "gleam build --no-print-progress"
