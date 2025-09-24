@@ -1,9 +1,9 @@
+import conversation.{Text}
+import gleam/dict
+import gleam/http/response
+import gleam/javascript/promise
 import gleeunit
 import gleeunit/should
-import gleam/dict
-import gleam/javascript/promise
-import gleam/http/response
-import conversation.{Text}
 import hinoto
 
 pub fn main() {
@@ -65,9 +65,7 @@ pub fn default_handler_test() {
 
 // Test fetch function creates a proper handler
 pub fn fetch_test() {
-  let my_handler = fn(hinoto_instance) {
-    hinoto_instance
-  }
+  let my_handler = fn(hinoto_instance) { hinoto_instance }
 
   let fetch_handler = hinoto.fetch(my_handler)
 
@@ -81,7 +79,8 @@ pub fn fetch_test() {
 
 // Test Environment dictionary access
 pub fn environment_dict_access_test() {
-  let env_dict = dict.from_list([#("DATABASE_URL", "test_url"), #("API_KEY", "test_key")])
+  let env_dict =
+    dict.from_list([#("DATABASE_URL", "test_url"), #("API_KEY", "test_key")])
   let env = hinoto.Environment(env: env_dict)
 
   case env {
@@ -109,17 +108,14 @@ pub fn update_environment_bug_test() {
   // This test will pass with the current implementation but should be updated when the bug is fixed
 
   let response1 = hinoto.default_handler()
-  let response2 = promise.resolve(response.new(201) |> response.set_body(Text("Created")))
+  let response2 =
+    promise.resolve(response.new(201) |> response.set_body(Text("Created")))
 
   response1
-  |> promise.map(fn(resp1) {
-    resp1.status |> should.equal(200)
-  })
+  |> promise.map(fn(resp1) { resp1.status |> should.equal(200) })
 
   response2
-  |> promise.map(fn(resp2) {
-    resp2.status |> should.equal(201)
-  })
+  |> promise.map(fn(resp2) { resp2.status |> should.equal(201) })
 }
 
 // Test ResponseBody variants
@@ -131,7 +127,8 @@ pub fn response_body_variants_test() {
   }
 
   // Test that responses can be created with different ResponseBody types
-  let response_with_text = response.new(200) |> response.set_body(Text("Text Response"))
+  let response_with_text =
+    response.new(200) |> response.set_body(Text("Text Response"))
   response_with_text.status |> should.equal(200)
   case response_with_text.body {
     Text(content) -> content |> should.equal("Text Response")
