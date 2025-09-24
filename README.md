@@ -32,7 +32,7 @@ A web framework written in Gleam, designed for multiple JavaScript runtimes!
 
 ## ⬇️ Install
 
-`gleam.toml`の`dependencies`にhinotoとhinoto_cliの依存を追記します。
+Add dependencies for hinoto and hinoto_cli to the `dependencies` section of `gleam.toml`.
 
 ```toml
 hinoto = { git = "https://github.com/Comamoca/hinoto" }
